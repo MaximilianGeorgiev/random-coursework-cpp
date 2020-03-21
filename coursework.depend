@@ -1,0 +1,125 @@
+# depslib dependency file v1.0
+1584699931 source:c:\repositories\coursework1-oop1\coursework\main.cpp
+	<iostream>
+	<Employee.h>
+	<Analyzer.h>
+	<vector>
+	<ConsoleHandler.h>
+	<MenuHandler.h>
+	<list>
+	<iterator>
+	<memory>
+
+1583164229 source:c:\repositories\coursework1-oop1\coursework\src\position.cpp
+	"Position.h"
+
+1583163645 c:\repositories\coursework1-oop1\coursework\include\position.h
+	<string>
+
+1584798033 source:c:\repositories\coursework1-oop1\coursework\src\employee.cpp
+	<Employee.h>
+	<Position.h>
+	<Squad.h>
+	"fwddeclare-squad.h"
+	"fwddeclare-emp.h"
+
+1584800422 c:\repositories\coursework1-oop1\coursework\include\employee.h
+	<iosfwd>
+	<fwddeclare-emp.h>
+	<fwddeclare-squad.h>
+	<Position.h>
+	<EmployeeInterface.h>
+	<Squad.h>
+	<string>
+	<list>
+	<memory>
+
+1584797506 source:c:\repositories\coursework1-oop1\coursework\src\programmer.cpp
+	"Programmer.h"
+	<Position.h>
+
+1584797506 c:\repositories\coursework1-oop1\coursework\include\programmer.h
+	<Employee.h>
+
+1584799417 source:c:\repositories\coursework1-oop1\coursework\src\consolehandler.cpp
+	"ConsoleHandler.h"
+	<iostream>
+	<Position.h>
+	<Programmer.h>
+	<Analyzer.h>
+	<vector>
+	<list>
+	<memory>
+	<algorithm>
+
+1584703580 c:\repositories\coursework1-oop1\coursework\include\consolehandler.h
+	<Employee.h>
+	<Squad.h>
+	<string>
+	<list>
+	<iostream>
+	<vector>
+	<memory>
+
+1584801386 source:c:\repositories\coursework1-oop1\coursework\src\lead.cpp
+	"Lead.h"
+
+1584801895 c:\repositories\coursework1-oop1\coursework\include\lead.h
+	<Programmer.h>
+	<Analyzer.h>
+
+1584800422 c:\repositories\coursework1-oop1\coursework\include\analyzer.h
+	<Employee.h>
+	<EmployeeInterface.h>
+	<vector>
+	<list>
+
+1584797295 source:c:\repositories\coursework1-oop1\coursework\src\analyzer.cpp
+	"Analyzer.h"
+	<list>
+	<iostream>
+	<vector>
+	<list>
+
+1584718812 source:c:\repositories\coursework1-oop1\coursework\src\menuhandler.cpp
+	"MenuHandler.h"
+	<ConsoleHandler.h>
+	<Squad.h>
+	<iostream>
+	<list>
+	<memory>
+
+1584699915 c:\repositories\coursework1-oop1\coursework\include\menuhandler.h
+	<iostream>
+	<list>
+	<memory>
+	<Employee.h>
+
+1584801120 c:\repositories\coursework1-oop1\coursework\include\employeeinterface.h
+	<iostream>
+	<memory>
+	<list>
+
+1584552462 source:c:\repositories\coursework1-oop1\coursework\src\employeeinterface.cpp
+	"EmployeeInterface.h"
+
+1584795680 source:c:\repositories\coursework1-oop1\coursework\src\squad.cpp
+	"Squad.h"
+	"Employee.h"
+
+1584795697 c:\repositories\coursework1-oop1\coursework\include\squad.h
+	"fwddeclare-squad.h"
+	"fwddeclare-emp.h"
+	<Employee.h>
+	<iostream>
+	<list>
+	<memory>
+
+1584621076 c:\repositories\coursework1-oop1\coursework\include\emp-squad-dependancy.h
+	<Employee.h>
+	<Squad.h>
+
+1584624557 c:\repositories\coursework1-oop1\coursework\include\fwddeclare-emp.h
+
+1584624564 c:\repositories\coursework1-oop1\coursework\include\fwddeclare-squad.h
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="coursework" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/coursework" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/coursework" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/Analyzer.h" />
+		<Unit filename="include/ConsoleHandler.h" />
+		<Unit filename="include/Employee.h" />
+		<Unit filename="include/EmployeeInterface.h" />
+		<Unit filename="include/Lead.h" />
+		<Unit filename="include/MenuHandler.h" />
+		<Unit filename="include/Position.h" />
+		<Unit filename="include/Programmer.h" />
+		<Unit filename="include/Squad.h" />
+		<Unit filename="include/fwddeclare-emp.h" />
+		<Unit filename="include/fwddeclare-squad.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Analyzer.cpp" />
+		<Unit filename="src/ConsoleHandler.cpp" />
+		<Unit filename="src/Employee.cpp" />
+		<Unit filename="src/EmployeeInterface.cpp" />
+		<Unit filename="src/Lead.cpp" />
+		<Unit filename="src/MenuHandler.cpp" />
+		<Unit filename="src/Position.cpp" />
+		<Unit filename="src/Programmer.cpp" />
+		<Unit filename="src/Squad.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
