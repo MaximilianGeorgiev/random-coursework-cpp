@@ -8,29 +8,21 @@ class Programmer : public Employee, public EmployeeInterface
     public:
         Programmer();
 
-
-        /*
-        Programmer(const string& fullName, const string& address,
-                   const string& PIN, const string& startDate, const string& leader,
-                   const Position& position, const string& projectName);
-
-        */
-
-        Programmer(string fullName, string address, string PIN, string startDate, string leader,
-                 Position position, string projectName);
+        Programmer(std::string fullName, std::string address, std::string PIN, std::string startDate, std::string leader,
+                 Position position, std::string projectName);
 
         virtual ~Programmer();
-        void printToStream(ostream& ostr);
-        void setProjectName(const string& name);
-        string getProjectName() const;
-        list<string> getCustomerEmails(); // read cpp
-        void setCustomerEmails(const list<string>& emails);
+        void printToStream(std::ostream& ostr);
+        void setProjectName(const std::string& name);
+        std::string getProjectName() const;
+        std::list<std::string> getCustomerEmails(); // read cpp
+        void setCustomerEmails(const std::list<std::string>& emails);
 
     protected:
        virtual Employee* clone_impl() const override {return new Programmer(*this); };;
 
     private:
-        string projectName;
+        std::string projectName;
 
 };
 

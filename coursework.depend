@@ -10,20 +10,20 @@
 	<iterator>
 	<memory>
 
-1583164229 source:c:\repositories\coursework1-oop1\coursework\src\position.cpp
+1584967994 source:c:\repositories\coursework1-oop1\coursework\src\position.cpp
 	"Position.h"
 
-1583163645 c:\repositories\coursework1-oop1\coursework\include\position.h
+1584967947 c:\repositories\coursework1-oop1\coursework\include\position.h
 	<string>
 
-1584798033 source:c:\repositories\coursework1-oop1\coursework\src\employee.cpp
+1584968747 source:c:\repositories\coursework1-oop1\coursework\src\employee.cpp
 	<Employee.h>
 	<Position.h>
 	<Squad.h>
 	"fwddeclare-squad.h"
 	"fwddeclare-emp.h"
 
-1584800422 c:\repositories\coursework1-oop1\coursework\include\employee.h
+1584968001 c:\repositories\coursework1-oop1\coursework\include\employee.h
 	<iosfwd>
 	<fwddeclare-emp.h>
 	<fwddeclare-squad.h>
@@ -34,25 +34,26 @@
 	<list>
 	<memory>
 
-1584797506 source:c:\repositories\coursework1-oop1\coursework\src\programmer.cpp
+1584968769 source:c:\repositories\coursework1-oop1\coursework\src\programmer.cpp
 	"Programmer.h"
 	<Position.h>
 
-1584797506 c:\repositories\coursework1-oop1\coursework\include\programmer.h
+1584968147 c:\repositories\coursework1-oop1\coursework\include\programmer.h
 	<Employee.h>
 
-1584799417 source:c:\repositories\coursework1-oop1\coursework\src\consolehandler.cpp
+1584968781 source:c:\repositories\coursework1-oop1\coursework\src\consolehandler.cpp
 	"ConsoleHandler.h"
 	<iostream>
 	<Position.h>
 	<Programmer.h>
 	<Analyzer.h>
+	<Lead.h>
 	<vector>
 	<list>
 	<memory>
 	<algorithm>
 
-1584703580 c:\repositories\coursework1-oop1\coursework\include\consolehandler.h
+1584968112 c:\repositories\coursework1-oop1\coursework\include\consolehandler.h
 	<Employee.h>
 	<Squad.h>
 	<string>
@@ -61,27 +62,27 @@
 	<vector>
 	<memory>
 
-1584801386 source:c:\repositories\coursework1-oop1\coursework\src\lead.cpp
+1584813376 source:c:\repositories\coursework1-oop1\coursework\src\lead.cpp
 	"Lead.h"
 
-1584801895 c:\repositories\coursework1-oop1\coursework\include\lead.h
+1584969984 c:\repositories\coursework1-oop1\coursework\include\lead.h
 	<Programmer.h>
 	<Analyzer.h>
 
-1584800422 c:\repositories\coursework1-oop1\coursework\include\analyzer.h
+1584968080 c:\repositories\coursework1-oop1\coursework\include\analyzer.h
 	<Employee.h>
 	<EmployeeInterface.h>
 	<vector>
 	<list>
 
-1584797295 source:c:\repositories\coursework1-oop1\coursework\src\analyzer.cpp
+1584968738 source:c:\repositories\coursework1-oop1\coursework\src\analyzer.cpp
 	"Analyzer.h"
 	<list>
 	<iostream>
 	<vector>
 	<list>
 
-1584718812 source:c:\repositories\coursework1-oop1\coursework\src\menuhandler.cpp
+1584968790 source:c:\repositories\coursework1-oop1\coursework\src\menuhandler.cpp
 	"MenuHandler.h"
 	<ConsoleHandler.h>
 	<Squad.h>
@@ -89,25 +90,25 @@
 	<list>
 	<memory>
 
-1584699915 c:\repositories\coursework1-oop1\coursework\include\menuhandler.h
+1584968120 c:\repositories\coursework1-oop1\coursework\include\menuhandler.h
 	<iostream>
 	<list>
 	<memory>
 	<Employee.h>
 
-1584801120 c:\repositories\coursework1-oop1\coursework\include\employeeinterface.h
+1584967976 c:\repositories\coursework1-oop1\coursework\include\employeeinterface.h
 	<iostream>
 	<memory>
 	<list>
 
-1584552462 source:c:\repositories\coursework1-oop1\coursework\src\employeeinterface.cpp
+1584813376 source:c:\repositories\coursework1-oop1\coursework\src\employeeinterface.cpp
 	"EmployeeInterface.h"
 
-1584795680 source:c:\repositories\coursework1-oop1\coursework\src\squad.cpp
+1584968728 source:c:\repositories\coursework1-oop1\coursework\src\squad.cpp
 	"Squad.h"
 	"Employee.h"
 
-1584795697 c:\repositories\coursework1-oop1\coursework\include\squad.h
+1584968073 c:\repositories\coursework1-oop1\coursework\include\squad.h
 	"fwddeclare-squad.h"
 	"fwddeclare-emp.h"
 	<Employee.h>
@@ -119,7 +120,7 @@
 	<Employee.h>
 	<Squad.h>
 
-1584624557 c:\repositories\coursework1-oop1\coursework\include\fwddeclare-emp.h
+1584967947 c:\repositories\coursework1-oop1\coursework\include\fwddeclare-emp.h
 
-1584624564 c:\repositories\coursework1-oop1\coursework\include\fwddeclare-squad.h
+1584813376 c:\repositories\coursework1-oop1\coursework\include\fwddeclare-squad.h
 

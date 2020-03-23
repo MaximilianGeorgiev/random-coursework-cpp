@@ -6,54 +6,33 @@
 #include <vector>
 #include <list>
 
-
-using namespace std;
-
-
 class Analyzer : public Employee, public EmployeeInterface
 {
     public:
         Analyzer();
 
-
-
-        /*
-        Analyzer(const string& fullName, const string& address,
-                 const string& PIN, const string& startDate, const string& leader,
-                 const Position& position, const string& projectName,
-                 const vector<string>& customersList);
-                 */
-
-        Analyzer(string fullName, string address,
-                    string PIN,  string startDate,
-                    string leader,
-                    Position position,  string projectName,
-                    list<string> customersList);
-
-         // copying constructor used by vector.push_back
-
+        Analyzer(std::string fullName, std::string address,
+                    std::string PIN,  std::string startDate,
+                    std::string leader,
+                    Position position,  std::string projectName,
+                    std::list<std::string> customersList);
 
         virtual ~Analyzer();
-        string getProjectName() const;
-        list<string> getCustomerEmails();
-        void printToStream(ostream& ostr);
-        void setProjectName(const string& name);
-        void setCustomerEmails(const list<string>& emails);
-
+        std::string getProjectName() const;
+        std::list<std::string> getCustomerEmails();
+        void printToStream(std::ostream& ostr);
+        void setProjectName(const std::string& name);
+        void setCustomerEmails(const std::list<std::string>& emails);
 
     protected:
         virtual Employee* clone_impl() const override {return new Analyzer(*this); };
 
     private:
-        string projectName;
-        list<string> customersList;
+        std::string projectName;
+        std::list<std::string> customersList;
 
 };
 
 std::ostream& operator << (std::ostream& ostr, Analyzer analyzer);
-
-
-
-
 
 #endif // ANALYZER_H

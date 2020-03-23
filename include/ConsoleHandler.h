@@ -9,28 +9,26 @@
 #include <vector>
 #include <memory>
 
-using namespace std;
-
-
+/* ConsoleHandler methods can be private and make an instance of the class to improve encapsulation but idk */
 class ConsoleHandler
 {
     public:
         ConsoleHandler();
         virtual ~ConsoleHandler();
 
-        static list<unique_ptr<Employee>> readInput();
-        static void print(const list<unique_ptr<Employee>>& printableList);
-        static void addEmployee(list<unique_ptr<Employee>>& printableList);
-        static void printEmployeeInfo(const list<unique_ptr<Employee>>& printableList, const string& name);
-        static void sackEmployee(list<unique_ptr<Employee>>& printableList, const string& name);
-        static void printEmployeesByPosition(const list<unique_ptr<Employee>>& printableList, const string& pos);
+        static std::list<std::unique_ptr<Employee>> readInput();
+        static void print(const std::list<std::unique_ptr<Employee>>& printableList);
+        static void addEmployee(std::list<std::unique_ptr<Employee>>& printableList);
+        static void printEmployeeInfo(const std::list<std::unique_ptr<Employee>>& printableList, const std::string& name);
+        static void sackEmployee(std::list<std::unique_ptr<Employee>>& printableList, const std::string& name);
+        static void printEmployeesByPosition(const std::list<std::unique_ptr<Employee>>& printableList, const std::string& pos);
         static void changeEmployeeInfo(Employee& employee,
-                                       const string& modifiable_field, const string& modify_value);
+                                       const std::string& modifiable_field, const std::string& modify_value);
 
-        static void createSquad(list<unique_ptr<Squad>>& squads, const list<unique_ptr<Employee>>& printableList);
-        static void changeEmployeeSquad(list<unique_ptr<Squad>>& squads, list<unique_ptr<Employee>>& employee);
-        static void deleteSquad(const string& name, list<unique_ptr<Squad>>& squads);
-        static void printSquads(list<unique_ptr<Squad>>& squads);
+        static void createSquad(std::list<std::unique_ptr<Squad>>& squads, const std::list<std::unique_ptr<Employee>>& printableList);
+        static void changeEmployeeSquad(std::list<std::unique_ptr<Squad>>& squads, std::list<std::unique_ptr<Employee>>& employee);
+        static void deleteSquad(std::list<std::unique_ptr<Squad>>& squads, std::list<std::unique_ptr<Employee>>& employee);
+        static void printSquads(std::list<std::unique_ptr<Squad>>& squads);
 
     protected:
 

@@ -4,38 +4,23 @@
 #include <vector>
 #include <list>
 
-using namespace std;
-
 Analyzer::Analyzer()
 {
     // base class constructor will automatically be called
     this->setProjectName("PROJECT ANTI CORONA VIRUS");
-    this->setCustomerEmails(list<string>());
+    this->setCustomerEmails(std::list<std::string>());
 }
 
-/*
-Analyzer::Analyzer(const string& fullName, const string& address,
-                   const string& PIN, const string& startDate,
-                   const string& leader,
-                   const Position& position, const string& projectName,
-                   const vector<string>& customersList)
+
+Analyzer::Analyzer(std::string fullName, std::string address,
+                    std::string PIN,  std::string startDate,
+                    std::string leader,
+                    Position position,  std::string projectName,
+                    std::list<std::string> customersList)
                    : Employee::Employee(fullName, address, PIN, startDate, leader, position)
 {
-    this->projectName = projectName;
-    this->customersList = customersList;
-}
-
-*/
-
-Analyzer::Analyzer(string fullName, string address,
-                    string PIN,  string startDate,
-                    string leader,
-                    Position position,  string projectName,
-                    list<string> customersList)
-                   : Employee::Employee(fullName, address, PIN, startDate, leader, position)
-{
-    setProjectName(projectName);
-    setCustomerEmails(customersList);
+    this->setProjectName(projectName);
+    this->setCustomerEmails(customersList);
 }
 
 
@@ -44,34 +29,33 @@ Analyzer::~Analyzer()
     //dtor
 }
 
-string Analyzer::getProjectName() const {
+std::string Analyzer::getProjectName() const {
     return this->projectName;
 }
 
-list<string> Analyzer::getCustomerEmails() {
+std::list<std::string> Analyzer::getCustomerEmails() {
     return this->customersList;
 }
 
-void Analyzer::setCustomerEmails(const list<string>& emails)
+void Analyzer::setCustomerEmails(const std::list<std::string>& emails)
 {
     this->customersList = emails;
 }
 
-void Analyzer::setProjectName(const string& projectName)
+void Analyzer::setProjectName(const std::string& projectName)
 {
     this->projectName = projectName;
 }
 
-
 void Analyzer::printToStream(std::ostream& ostr)  {
 
-     ostr << this->getFullName() << string(" ") << this->getAddress() << string(" ") << this->getPIN()
-     << string(" ")  << this->getStartDate() << string(" ")  << this->getLeader() << string(" ")
-     << this->getPositionName() << string("\n");
+     ostr << this->getFullName() << std::string(" ") << this->getAddress() << std::string(" ") << this->getPIN()
+     << std::string(" ")  << this->getStartDate() << std::string(" ")  << this->getLeader() << std::string(" ")
+     << this->getPositionName() << std::string("\n");
 
-     ostr << this->getProjectName() << string(" ");
+     ostr << this->getProjectName() << std::string(" ");
 
-     for (const auto& iter : this->getCustomerEmails()) cout << iter << string(" ");
+     for (const auto& iter : this->getCustomerEmails()) std::cout << iter << std::string(" ");
 }
 
  std::ostream& operator << (std::ostream& ostr, Analyzer analyzer) {

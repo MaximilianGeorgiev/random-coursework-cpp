@@ -3,22 +3,21 @@
 
 #include <string>
 
-using namespace std;
 
 class Position
 {
     public:
         Position();
-        Position(const string& name, const int& level);
-        string getPositionName() const;
+        Position(const std::string& name, const int& level);
+        std::string getPositionName() const;
         int getPositionLevel() const;
         virtual ~Position();
 
     protected:
 
     private:
-        string positionName;
-        void setPositionName(const string& posName);
+        std::string positionName;
+        void setPositionName(const std::string& posName);
         int positionLevel;
         void setPositionLevel(const int& posLevel);
 

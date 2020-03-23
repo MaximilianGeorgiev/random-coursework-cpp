@@ -6,20 +6,14 @@
 #include <memory>
 #include <Employee.h>
 
-using namespace std;
-
-
-
-
 class MenuHandler
 {
     public:
         MenuHandler();
         virtual ~MenuHandler();
         static void printMenu(bool isFirstTime);
-        static void handleMenu(list<unique_ptr<Squad>>& squads, list<unique_ptr<Employee>>& printableList);
+        static void handleMenu(std::list<std::unique_ptr<Squad>>& squads, std::list<std::unique_ptr<Employee>>& printableList);
         static void handleExceptions();
-
 
     protected:
 

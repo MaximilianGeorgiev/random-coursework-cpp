@@ -5,21 +5,18 @@
 #include <memory>
 #include <list>
 
-using namespace std;
-
-
 class EmployeeInterface
 {
     public:
         EmployeeInterface();
         virtual ~EmployeeInterface();
 
-        virtual void printToStream(ostream& ostr) = 0;
-        virtual void setProjectName(const string& name) = 0;
-        virtual void setCustomerEmails(const list<string>& emails) = 0;
-        virtual list<string> getCustomerEmails() = 0;
+        virtual void printToStream(std::ostream& ostr) = 0;
+        virtual void setProjectName(const std::string& name) = 0;
+        virtual void setCustomerEmails(const std::list<std::string>& emails) = 0;
+        virtual std::list<std::string> getCustomerEmails() = 0;
 
-        auto clone() const {return unique_ptr<EmployeeInterface>(clone_impl()); };
+        auto clone() const {return std::unique_ptr<EmployeeInterface>(clone_impl()); };
 
     protected:
 

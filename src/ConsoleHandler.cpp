@@ -9,8 +9,6 @@
 #include <memory>
 #include <algorithm>
 
-using namespace std;
-
 ConsoleHandler::ConsoleHandler()
 {
     //ctor
@@ -22,106 +20,101 @@ ConsoleHandler::~ConsoleHandler()
 }
 
 
-list<unique_ptr<Employee>> ConsoleHandler::readInput()
+std::list<std::unique_ptr<Employee>> ConsoleHandler::readInput()
 {
-
     // unique pointers so I can use runtime polymorphism and access virtual methods in derived classes
-    list<unique_ptr<Employee>> employeeList;
+    std::list<std::unique_ptr<Employee>> employeeList;
     int employeesFilled = 0;
-    string currentInput;
+    std::string currentInput;
 
-    cout << "Please input information about the company. \n";
-    cout << "You will have to input more than one worker(s). The input continues until \"END\" is received. \n";
+    std::cout << "Please input information about the company. \n";
+    std::cout << "You will have to input more than one worker(s). The input continues until \"END\" is received. \n";
 
     while (currentInput != "END"){
         addEmployee(employeeList);
         employeesFilled++;
-        cin >> currentInput;
+        std::cin >> currentInput;
     }
 
     return employeeList;
 }
 
- void ConsoleHandler::print(const list<unique_ptr<Employee>>& printableList){
-    for (const auto& it : printableList)   cout << *it << string(" ");
+ void ConsoleHandler::print(const std::list<std::unique_ptr<Employee>>& printableList){
+    for (const auto& it : printableList)   std::cout << *it << std::string(" ");
 }
 
- void ConsoleHandler::addEmployee(list<unique_ptr<Employee>>& printableList){
-        string currentInput, positionName, employeeName, employeeAddress, employeePIN, employeeLeader, employeeStartDate;
+ void ConsoleHandler::addEmployee(std::list<std::unique_ptr<Employee>>& printableList){
+        std::string currentInput, positionName, employeeName, employeeAddress, employeePIN, employeeLeader, employeeStartDate;
         int positionLevel;
 
-        cout << "Please input this employee's position: (programmer, analyzer, lead) -- they are case sensitive \n";
-        cin >> positionName;
+        std::cout << "Please input this employee's position: (programmer, analyzer, lead) -- they are case sensitive \n";
+        std::cin >> positionName;
 
         // can be improved with regex
         // white spaces not trimmed
         while (positionName != "programmer" && positionName != "analyzer" && positionName != "lead"){
-            cout << "The position is invalid. Please try again. \n";
-            cin >> positionName;
+            std::cout << "The position is invalid. Please try again. \n";
+            std::cin >> positionName;
         }
 
-        cout << "Please input this employee's position level: \n ";
-        cin >> positionLevel;
+        std::cout << "Please input this employee's position level: \n ";
+        std::cin >> positionLevel;
 
-        cout << "Please input this employee's full name: \n";
-        cin >> employeeName;
+        std::cout << "Please input this employee's full name: \n";
+        std::cin >> employeeName;
 
-        cout << "Please input this employee's address: \n";
-        cin >> employeeAddress;
+        std::cout << "Please input this employee's address: \n";
+        std::cin >> employeeAddress;
 
-        cout << "Please input this employee's PIN: \n";
-        cin >> employeePIN;
+        std::cout << "Please input this employee's PIN: \n";
+        std::cin >> employeePIN;
 
-        cout << "Please input this employee's start date: \n";
-        cin >> employeeStartDate;
+        std::cout << "Please input this employee's start date: \n";
+        std::cin >> employeeStartDate;
 
-        cout << "Please input this employee's leader: \n";
-        cin >> employeeLeader;
+        std::cout << "Please input this employee's leader: \n";
+        std::cin >> employeeLeader;
 
         Position position(positionName, positionLevel);
 
-        string projectName, customerEmail;
-        list<string> analyzer_customerEmails;
+        std::string projectName, customerEmail;
+        std::list<std::string> analyzer_customerEmails;
 
         if (position.getPositionName() == "programmer"){
-            cout << "Please input the project's name this programmer is working on: \n";
-            cin >> projectName;
+            std::cout << "Please input the project's name this programmer is working on: \n";
+            std::cin >> projectName;
 
-            printableList.emplace_back(make_unique<Programmer>(employeeName, employeeAddress, employeePIN, employeeStartDate,
+            printableList.emplace_back(std::make_unique<Programmer>(employeeName, employeeAddress, employeePIN, employeeStartDate,
                              employeeLeader, position, projectName));
            // employeeList.emplace_back(Programmer(employeeName, employeeAddress, employeePIN, employeeStartDate, employeeLeader, position, projectName));
-        } else if (position.getPositionName() == "analyzer"){
-            cout << "Please input the project's name this analyzer is working on: \n";
-            cin >> projectName;
+        } else if (position.getPositionName() == "analyzer" || position.getPositionName() == "lead"){
+            std::cout << "Please input the project's name this analyzer is working on: \n";
+            std::cin >> projectName;
 
-            cout << "Please input the customers' emails. The iteration continues until \"END\" is inputted. \n";
-            cin >> customerEmail;
+            std::cout << "Please input the customers' emails. The iteration continues until \"END\" is inputted. \n";
+            std::cin >> customerEmail;
 
             while (customerEmail != "END"){
-                analyzer_customerEmails.emplace_back(string(customerEmail));
-                cin >> customerEmail;
+                analyzer_customerEmails.emplace_back(std::string(customerEmail));
+                std::cin >> customerEmail;
             }
 
-            printableList.emplace_back(make_unique<Analyzer>(employeeName, employeeAddress, employeePIN, employeeStartDate,
+            printableList.emplace_back(std::make_unique<Analyzer>(employeeName, employeeAddress, employeePIN, employeeStartDate,
                               employeeLeader, position, projectName, analyzer_customerEmails));
-
-           // employeeList.emplace_back(Analyzer(employeeName, employeeAddress, employeePIN, employeeStartDate,
-                           //   employeeLeader, position, projectName, analyzer_customerEmails));
         }
-
  }
 
-void ConsoleHandler::printEmployeeInfo(const list<unique_ptr<Employee>>& printableList, const string& name){
+void ConsoleHandler::printEmployeeInfo(const std::list<std::unique_ptr<Employee>>& printableList, const std::string& name){
     for (const auto& it : printableList){
         if (it->getFullName() == name) {
-            cout << *it << string(" ");
+            std::cout << *it << std::string(" ");
             return;
         }
     }
-    cout << "Unable to find username";
+    std::cout << "Unable to find username";
 }
 
-void ConsoleHandler::sackEmployee(list<unique_ptr<Employee>>& printableList, const string& name){
+void ConsoleHandler::sackEmployee(std::list<std::unique_ptr<Employee>>& printableList, const std::string& name){
      for (const auto& it : printableList){
         if (it->getFullName() == name) {
             printableList.remove(it);
@@ -129,18 +122,18 @@ void ConsoleHandler::sackEmployee(list<unique_ptr<Employee>>& printableList, con
         }
     }
 
-    cout << "Unable to find username";
+    std::cout << "Unable to find username";
 }
 
-void ConsoleHandler::printEmployeesByPosition(const list<unique_ptr<Employee>>& printableList, const string& pos){
+void ConsoleHandler::printEmployeesByPosition(const std::list<std::unique_ptr<Employee>>& printableList, const std::string& pos){
         for (const auto& it : printableList){
          if (it->getPositionName() == pos) {
-            cout << *it << string(" ");
+            std::cout << *it << std::string(" ");
         }
     }
 }
 
-void ConsoleHandler::changeEmployeeInfo(Employee& employee, const string& modify_field, const string& modify_value){
+void ConsoleHandler::changeEmployeeInfo(Employee& employee, const std::string& modify_field, const std::string& modify_value){
     // thank you C++ for not supporting switch case for strings
     if (modify_field == "name") employee.setFullName(modify_value);
     else if (modify_field == "address") employee.setAddress(modify_value);
@@ -149,8 +142,8 @@ void ConsoleHandler::changeEmployeeInfo(Employee& employee, const string& modify
     else if (modify_field == "leader") employee.setLeader(modify_value);
     else if (modify_field == "position"){
         int posLevel;
-        cout << "Please input position level: ";
-        cin >> posLevel;
+        std::cout << "Please input position level: ";
+        std::cin >> posLevel;
 
         employee.setPosition(Position(modify_field, posLevel));
     }
@@ -159,20 +152,19 @@ void ConsoleHandler::changeEmployeeInfo(Employee& employee, const string& modify
         // could throw exception depending whether its derived or base class
         employee.setProjectName(modify_value);
     } else if (modify_field == "email"){
-        string action;
-        cin >> action;
-        cout << "Would you like to remove or add emails or modify existing emails? Input ADD or REMOVE or MODIFY \n";
-
+        std::string action;
+        std::cin >> action;
+        std::cout << "Would you like to remove or add emails or modify existing emails? Input ADD or REMOVE or MODIFY \n";
 
         // kind of memory consuming to create a new instance rather than use a pointer; might fix later
-        list<string> customers = employee.getCustomerEmails();
+        std::list<std::string> customers = employee.getCustomerEmails();
         customers.emplace_back(modify_value);
 
         if (action == "ADD") customers.emplace_back(modify_value);
         else if (action == "REMOVE") customers.remove(modify_value);
         else if (action == "MODIFY") {
-            string newValue;
-            cout << "Please add the new value for " << modify_value << "\n";
+            std::string newValue;
+            std::cout << "Please add the new value for " << modify_value << "\n";
 
             /* we need to grab the index of the value, remove it and insert the new one at this index, but we won't be doing
             it at this point */
@@ -184,18 +176,17 @@ void ConsoleHandler::changeEmployeeInfo(Employee& employee, const string& modify
     }
 }
 
-void ConsoleHandler::createSquad(list<unique_ptr<Squad>>& squads, const list<unique_ptr<Employee>>& printableList){
-    string squadName, leaderName, projectName;
-    list<Lead> empsToAdd;
+void ConsoleHandler::createSquad(std::list<std::unique_ptr<Squad>>& squads, const std::list<std::unique_ptr<Employee>>& printableList){
+    std::string squadName, leaderName, projectName;
+    std::list<std::string> empsToAdd;
     bool isLeaderValid = false;
     bool isCurrentEmployeeValid = false;
 
-    cout << "Please input the name of the squad: \n";
-    cin >> squadName;
+    std::cout << "Please input the name of the squad: \n";
+    std::cin >> squadName;
 
-    cout << "Please input the name of the leader: \n";
-    cin >> leaderName;
-
+    std::cout << "Please input the name of the leader: \n";
+    std::cin >> leaderName;
 
     /*
         1. Iterate through all employees to find whether the leader is an active employee.
@@ -204,88 +195,108 @@ void ConsoleHandler::createSquad(list<unique_ptr<Squad>>& squads, const list<uni
 
     */
 
-
-   for (const auto& it : printableList){
+   for (auto& it : printableList){
     if (it->getFullName() == leaderName){
         isLeaderValid = true;
-        cout << "Please input the name of the project: \n";
-        cin >> projectName; // no check to see if it's valid
+        std::cout << "Please input the name of the project: \n";
+        std::cin >> projectName; // no check to see if it's valid
 
-        string inputNext, employeeName;
-        cout << "Press any key to continue. \n";
-        cin >> inputNext;
+        std::string inputNext, employeeName;
+        std::cout << "Press any key to continue. \n";
+        std::cin >> inputNext;
 
         while (inputNext != "END"){
-            cout << "Please input the name of the employees in this squad. Filling continues until END is submitted.";
-            cin >> employeeName;
+            std::cout << "Please input the name of the employees in this squad. Filling continues until END is submitted.";
+            std::cin >> employeeName;
 
-            for (const auto& it2 : printableList){
-                if (it2 != it && it2->getFullName() == employeeName && it2->getSquadName() != ""){
+            for (auto& it2 : printableList){
+                if (it2 != it && it2->getFullName() == employeeName && it2->getSquad() != ""){
                     isCurrentEmployeeValid = true;
-                    Employee emp = *it2;
-                    empsToAdd.emplace_back(emp);
+                    empsToAdd.emplace_back(it2->getFullName());
                 }
             }
 
             if (!isCurrentEmployeeValid) {
-                cout << "Unable to find an Employee with such name. Please try again. \n";
+                std::cout << "Unable to find an Employee with such name. Please try again. \n";
                 continue;
             }
 
-            cin >> inputNext;
+            std::cin >> inputNext;
         }
 
-        list<Employee> newList;
+        Squad squad(projectName,
+                     it->getFullName(),
+                     projectName,
+                      empsToAdd);
 
-        for (auto it : empsToAdd){
-            newList.emplace_back((Employee)it);
-        }
-
-        Squad squad = Squad(squadName, **&it,
-                             projectName, empsToAdd);
-        squads.emplace_back(make_unique<Squad>(squad));
+        squads.emplace_back(std::make_unique<Squad>(squad));
     }
    }
 
-   if (!isLeaderValid) cout << "Unable to find an employee with such name. \n";
+   if (!isLeaderValid) std::cout << "Unable to find an employee with such name. \n";
 }
 
-void ConsoleHandler::changeEmployeeSquad(list<unique_ptr<Squad>>& squads, list<unique_ptr<Employee>>& employees){
-    string employeeName, newSquad;
+void ConsoleHandler::changeEmployeeSquad(std::list<std::unique_ptr<Squad>>& squads, std::list<std::unique_ptr<Employee>>& employees){
+    std::string employeeName, newSquad;
     bool isSquadValid;
 
-    cout << "Please input the name of the employee you would like to change the squad of: \n";
-    cin >> employeeName;
+    std::cout << "Please input the name of the employee you would like to change the squad of: \n";
+    std::cin >> employeeName;
 
     for (const auto& empIterator : employees) {
         if (empIterator->getFullName() == employeeName){
-             cout << "Please input the name of the squad you would like this employee to receive: \n";
-             cin >> newSquad;
+             std::cout << "Please input the name of the squad you would like this employee to receive: \n";
+             std::cin >> newSquad;
 
              for (const auto& squadIterator : squads){
                 if (squadIterator->getSquadName() == newSquad){
                     isSquadValid = true;
-                    empIterator->setSquad(*squadIterator);
+                    empIterator->setSquad(squadIterator->getSquadName());
                 }
              }
         }
     }
 
-    if (!isSquadValid) cout << "Invalid name of squad. \n";
+    if (!isSquadValid) std::cout << "Invalid name of squad. \n";
 }
 
-void ConsoleHandler::printSquads(list<unique_ptr<Squad>>& squads){
-    for (const auto& it : squads){
-        cout << it->getSquadName() << "\n";
-        cout << it->getLeaderName() << "\n";
-        cout << it->getProject() << "\n";
+void ConsoleHandler::deleteSquad(std::list<std::unique_ptr<Squad>>& squads, std::list<std::unique_ptr<Employee>>& employee){
+    std::string squadToDelete;
+    std::cout << "Please input the name of the squad you wish to delete: \n";
 
-        cout << "Employees: \n";
+    std::cin >> squadToDelete;
+    bool isSquadValid = false;
+
+    for (const auto& sq : squads){
+        if (sq->getSquadName() == squadToDelete){
+            isSquadValid = true;
+            squads.remove(sq);
+        }
+    }
+
+    if (!isSquadValid) {
+        std::cout << "Invalid name of squad. \n";
+        return;
+    }
+
+    for (const auto& emp : employee){
+        if (emp->getSquad() == squadToDelete){
+            emp->setSquad("NOSQUAD");
+        }
+    }
+}
+
+void ConsoleHandler::printSquads(std::list<std::unique_ptr<Squad>>& squads){
+    for (const auto& it : squads){
+        std::cout << "Squad name: " << it->getSquadName() << "\n";
+        std::cout << "Leader name " << it->getLeaderName() << "\n";
+        std::cout << "Project name: " <<it->getProject() << "\n";
+
+        std::cout << "Employees: \n";
 
         for (const auto& emp : it->getEmployees()){
-            cout << emp.getFullName() << "\n";
+            std::cout << emp << "\n";
         }
-
-        cout << "\n";
+        std::cout << "\n";
     }
 }

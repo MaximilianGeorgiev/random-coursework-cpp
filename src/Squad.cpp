@@ -1,22 +1,29 @@
 #include "Squad.h"
 #include "Employee.h"
 
+/*
+ As much as I wished employees in Squad can be objects/pointers to the Employee class, after 5 continious days of debugging and
+ going in circles I had to do a ghetto fix and keep strings only (employee name for example). Same applies for the squads in
+ Employee
+*/
+
 Squad::Squad(){
 this->setName(" ");
-//this->setLeader(null);
+this->setLeader(" ");
 this->setProject(" ");
-this->setEmployees(list<Employee>());
+this->setEmployees(std::list<std::string>());
 }
 
-Squad::Squad(const Squad& squad)
+Squad::Squad(Squad& squad)
 {
     this->setName(squad.getSquadName());
-    this->setLeader(squad.getLeader());
+    this->setLeader(squad.getLeaderName());
     this->setProject(squad.getProject());
     this->setEmployees(squad.getEmployees());
 }
 
-Squad::Squad(const string& name, Employee& leader, const string& project, const list<Employee>& employees)
+// unique ptr has no copy constructor so cannot be const
+Squad::Squad(const std::string& name, const std::string& leader, const std::string& project, const std::list<std::string>& employees)
 {
     this->setName(name);
     this->setLeader(leader);
@@ -29,37 +36,35 @@ Squad::~Squad()
     //dtor
 }
 
-void Squad::setName(const string& name){
+void Squad::setName(const std::string& name){
     this->squadName = name;
 }
 
-void Squad::setLeader (Employee& leader){
-    this->leader = make_unique<Employee>(leader);
+void Squad::setLeader (const std::string& leader){
+    this->leader = leader;
 }
 
-void Squad::setProject(const string& project){
+void Squad::setProject(const std::string& project){
     this->project = project;
 }
 
-void Squad::setEmployees(const list<Employee>& employees){
+void Squad::setEmployees(const std::list<std::string>& employees){
     this->employees = employees;
 }
 
-string Squad::getSquadName() const {
+std::string Squad::getSquadName() const {
     return this->squadName;
 }
-Employee& Squad::getLeader() const {
-    return *this->leader;
+
+
+std::string Squad::getLeaderName() const {
+    return this->leader;
 }
 
-string Squad::getLeaderName() const {
-    return this->leader->getFullName();
-}
-
-string Squad::getProject() const {
+std::string Squad::getProject() const {
     return this->project;
 }
 
-list<Employee> Squad::getEmployees() const {
+std::list<std::string> Squad::getEmployees() const {
     return this->employees;
 }

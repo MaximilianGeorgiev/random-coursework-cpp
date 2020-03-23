@@ -7,35 +7,32 @@
 #include <list>
 #include <memory>
 
-
-using namespace std;
-
-
 class Squad
 {
     public:
         Squad();
-        Squad(const Squad& squad);
-        Squad(const string& name, Employee& leader, const string& project, const list<Employee>& employees);
-        string getSquadName() const;
-        Employee& getLeader() const;
-        string getLeaderName() const;
-        string getProject() const;
-        list<Employee> getEmployees() const;
+        Squad(Squad& squad);
+        Squad(const std::string& name, const std::string& leader, const std::string& project,
+               const std::list<std::string>& employees); // cannot be const because unique ptr has no copy constructor
+        std::string getSquadName() const;
+        std::string getLeaderName() const;
+        std::string getProject() const;
+        std:: list<std::string> getEmployees() const;
         virtual ~Squad();
 
     protected:
 
     private:
-        string squadName;
-        unique_ptr<Employee> leader;
-        string project;
-        list<Employee> employees; // every employee will have squad and every squad will have multiple employees
+        std::string squadName;
+        //unique_ptr<Employee>  leader; // after 5 continuous days of trying to get it to work with pointers to the real objects, I just couldn't that's why we will work with strings only
+        std::string leader;
+        std::string project;
+        std::list<std::string> employees; // every employee will have squad and every squad will have multiple employees
 
-        void setName (const string& name);
-        void setLeader (Employee& leader);
-        void setProject (const string& project);
-        void setEmployees (const list<Employee>& employees);
+        void setName (const std::string& name);
+        void setLeader (const std::string&  leader);
+        void setProject (const std::string& project);
+        void setEmployees (const std::list<std::string>& employees);
 
 };
 

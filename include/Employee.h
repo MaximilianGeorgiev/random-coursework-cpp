@@ -10,8 +10,6 @@
 #include <list>
 #include <memory>
 
-using namespace std;
-
 
 /*
 Initially this class had pure virtual methods but afterwards due to it being abstract and
@@ -31,8 +29,7 @@ Even though this makes no sense. Will possibly address.
 class Employee : public EmployeeInterface
 {
     public:
-
-        unique_ptr<EmployeeInterface> empPtr;
+        std::unique_ptr<EmployeeInterface> empPtr;
 
         Employee();
         Employee(const Employee& otherEmp) : empPtr(otherEmp.empPtr->clone()) {}
@@ -41,57 +38,41 @@ class Employee : public EmployeeInterface
         Employee& operator = (const Employee& emp) {empPtr = emp.empPtr->clone(); return *this; }
         Employee& operator = (Employee&& emp) = default;
 
-
         ~Employee() = default;
 
-
-        /*
-        Employee(const string& fullName, const string& address,
-                 const string& PIN, const string& startDate,
-                 const string& leader, const Position& position);
-
-        */
-
         //copying constructor used by vector.push_back
-        Employee(string fullName, string address, string PIN, string startDate, string leader,
-                 Position position);
-
-        Employee(const unique_ptr<Employee>& ptr);
-
+        Employee(std::string fullName, std::string address, std::string PIN, std::string startDate, std::string leader,
+               Position position);
 
         void printToStream(std::ostream& ostr);
-        void setProjectName(const string& name);
-        void setCustomerEmails(const list<string>& emails);
-        list<string> getCustomerEmails();
+        void setProjectName(const std::string& name);
+        void setCustomerEmails(const std::list<std::string>& emails);
+        std::list<std::string> getCustomerEmails();
 
-
-        void setFullName(const string& name);
-        void setAddress(const string& address);
-        void setPIN(const string& PIN);
-        void setStartDate(const string& startDate);
-        void setLeader(const string& leader);
+        void setFullName(const std::string& name);
+        void setAddress(const std::string& address);
+        void setPIN(const std::string& PIN);
+        void setStartDate(const std::string& startDate);
+        void setLeader(const std::string& leader);
         void setPosition(const Position& pos);
-        void setSquad(Squad& squad);
-        string getFullName() const;
-        string getAddress() const;
-        string getPIN() const;
-        string getStartDate() const;
-        string getLeader() const;
+        void setSquad(const std::string& squad);
+        std::string getFullName() const;
+        std::string getAddress() const;
+        std::string getPIN() const;
+        std::string getStartDate() const;
+        std::string getLeader() const;
         Position getPositionInfo() const;
-        string getPositionName() const;
-        Squad& getSquad() const;
-        string getSquadName() const;
-
-        //std::ostream& operator = (const Employee& emp);
+        std::string getPositionName() const;
+        std::string getSquad() const;
+        std::string getSquadName() const;
 
     protected:
         virtual Employee* clone_impl() const override { return new Employee(*this); };
 
-
     private:
-        string fullName, address, PIN, startDate, leader;
+        std::string fullName, address, PIN, startDate, leader;
         Position position;
-        unique_ptr<Squad> squad;
+        std::string squad;
         /*
          as much as I hate working with pointers it is inevitable
         // circular dependancies throws runtime errors
@@ -99,8 +80,6 @@ class Employee : public EmployeeInterface
         // we will use pointers for the squad here and the leader employee in squad
 
         */
-
-
 };
 
 // being passed as reference only, otherwise operator attempts to create new instance and eveything fails
